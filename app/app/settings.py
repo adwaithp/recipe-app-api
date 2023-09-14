@@ -69,7 +69,7 @@ TEMPLATES = [
         },
     },
 ]
-TESTS = 'app.core.tests'
+# TESTS = 'app.core.tests'
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
