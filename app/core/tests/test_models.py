@@ -13,5 +13,5 @@ class ModelTests(TestCase):
             password = password,
         )
 
-        self.assert_(user.email, email)
-        self.assert_(user.check_password(password))
+        self.assertEqual(user.email, email)
+        self.assertEqual(user.check_password(password))
