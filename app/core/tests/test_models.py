@@ -1,6 +1,8 @@
 # tests for models.
 from django.test import TestCase
 from django.contrib.auth import get_user_model
+from decimal import Decimal
+from app.core import models
 
 class ModelTests(TestCase):
     #Test models.
@@ -25,3 +27,20 @@ class ModelTests(TestCase):
         for email, expected in sample_emails:
             user = get_user_model().objects.create_user(email, 'sample1234')
             self.assertEqual(user.email, expected)
+
+    def test_create_recipe(self):
+        # Test creating a recipe is successful.
+        user = get_user_model().objects.create_user(
+            'test@example.com'
+            'test@pass'
+        )
+        recipe = models.Recipe.objects.create(
+            user=user,
+            title='sample recipe name',
+            time_minute=5,
+            price=Decimal('5.50'),
+            description='sample description'
+        )
+
+        self.assertEqual(str(recipe), recipe.title)
+
